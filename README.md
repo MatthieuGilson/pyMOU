@@ -14,4 +14,4 @@ The installer pip comes with Anaconda and most Python distribution. Just run:
 
 ## How to use?
 
-Check the Python notebooks in `Examples`.
+Check the Python notebooks in `examples`.
