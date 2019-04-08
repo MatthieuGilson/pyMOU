@@ -28,7 +28,7 @@ config = {
     'author': 'Andrea Insabato, Gorka Zamora-López, Matthieu Gilson',
     'author_email': '',
     'url': 'https://github.com/MatthieuGilson/pyMOU',
-    'version': '0.0.11',
+    'version': '0.0.12',
     'install_requires': REQS,
     'packages': find_packages(exclude=['doc', '*tests*']),
     'scripts': [],
