@@ -130,7 +130,7 @@ class MOU(BaseEstimator):
                                    or (not Sigma.shape[0] == self.n_nodes):
                 raise TypeError("""Matrix argument Sigma in MOU constructor must
                                 be square and of same size as C.""")
-            if (not Sigma == Sigma.T) or np.any(np.linalg.eigvals(Sigma)<0):
+            if (not np.all(Sigma == Sigma.T)) or np.any(np.linalg.eigvals(Sigma) < 0):
                 raise ValueError("""Matrix argument Sigma in MOU constructor must 
                                  be positive semidefinite (hence symmetric).""")
             self.Sigma = Sigma
