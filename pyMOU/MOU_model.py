@@ -342,7 +342,7 @@ class MOU(BaseEstimator):
             J = -np.eye(self.n_nodes, dtype=np.float) / tau_x + C
 
             # Calculate Q0 and Qtau for model
-            Q0 = spl.solve_lyapunov(J, -Sigma)
+            Q0 = spl.solve_continuous_lyapunov(J, -Sigma)
             Qtau = np.dot( Q0, spl.expm( J.T*i_tau_opt ) )
 
             # difference matrices between model and objectives
@@ -450,7 +450,7 @@ class MOU(BaseEstimator):
         Sigma_best = np.real(Sigma)
 
         # model theoretical covariances with real J and Sigma
-        Q0 = spl.solve_lyapunov(J_best, -Sigma_best)
+        Q0 = spl.solve_continuous_lyapunov(J_best, -Sigma_best)
         Q1 = np.dot( Q0, spl.expm(J_best.T) )
 
         # Calculate error between model and empirical data for Q0 and FC_tau (matrix distance)
@@ -501,7 +501,7 @@ class MOU(BaseEstimator):
         """
 
         # Calculate zero lag-covariance Q0 by solving Lyapunov equation
-        Q0 = spl.solve_lyapunov(self.J, -self.Sigma)
+        Q0 = spl.solve_continuous_lyapunov(self.J, -self.Sigma)
         # Calculate the effect of the lag (still valid for tau = 0.0)
         if tau>=0.0:
             return np.dot(Q0, spl.expm(tau * self.J.T))
